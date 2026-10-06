@@ -1,0 +1,158 @@
+[
+  {
+    "input_text": "Уже третий день не могу зайти в личный кабинет приложения. Пишет 'ошибка сервера', хотя интернет у меня работает нормально. Я пробовал переустановить приложение, не помогло. Что делать?",
+    "results": {
+      "v1_minimal": {
+        "sentiment": "negative",
+        "intent": "получить помощь в устранении неполадок с входом в приложение",
+        "main_problem": {
+          "description": "Не удается войти в личный кабинет приложения; отображается сообщение об ошибке сервера",
+          "affected_component": "аутентификация/вход в приложение"
+        },
+        "technical_details": {
+          "error_message": "ошибка сервера",
+          "internet_connectivity": "работает нормально",
+          "steps_attempted": [
+            "переустановка приложения"
+          ]
+        },
+        "urgency": "высокая",
+        "suggested_actions": [
+          "Проверьте, работает ли сервер приложения (сайт разработчика, статус в Twitter, сервис оповещений)",
+          "Очистите кеш и данные приложения (Настройки > Приложения > [имя приложения] > Очистить кеш)",
+          "Закройте приложение и запустите его заново",
+          "Попробуйте войти в систему с другого сетевого соединения (мобильные данные, другая Wi-Fi сеть)",
+          "Обновите приложение до последней версии или установите последнюю доступную версию",
+          "Выполните сброс пароля/сброс учетной записи, если проблема сохраняется",
+          "Свяжитесь со службой поддержки разработчиков приложения, предоставив сообщение об ошибке и журнал активности"
+        ]
+      },
+      "v2_strict": {
+        "summary": "Пользователь не может получить доступ к учетной записи приложения уже три дня, получая сообщение об ошибке сервера, несмотря на стабильный интернет и переустановку приложения. Проблема, по-видимому, является серверной и не связана с клиентской стороной.",
+        "key_points": [
+          "С persistent ошибкой сервера, несмотря на несколько попыток, что указывает на возможный сбой серверов приложения.",
+          "Переустановка приложения не помогла, что указывает на то, что проблема не связана с клиентом.",
+          "Стабильное интернет-соединение указывает на то, что проблема, вероятно, связана с серверной инфраструктурой сервиса или региональной неисправностью."
+        ],
+        "response": "Свяжитесь со службой поддержки приложения или проверьте страницу статуса сервиса, чтобы узнать о известных сбоях. Очистите кэш и данные приложения, затем попробуйте войти заново. Если проблема не устраняется, попробуйте использовать другое сетевое соединение или VPN, чтобы определить, является ли проблема специфичной для региона."
+      },
+      "v3_few_shot": {
+        "summary": "User cannot access the app's personal account for three days, receiving a server error despite working internet and reinstalling the app.",
+        "key_points": [
+          "Possible server-side outage or temporary service disruption.",
+          "App data or cache corruption that persists after reinstall.",
+          "Alternative access methods and support outreach are needed."
+        ],
+        "response": "First, verify the app's service status via official channels or social media. Next, clear the app's cache and data, then attempt to log in again. If the issue continues, try accessing the account through a web browser or contact support for further assistance."
+      }
+    }
+  },
+  {
+    "input_text": "Фотосинтез — это процесс, при котором растения преобразуют энергию света в химическую энергию. Он происходит в хлоропластах и требует воды, углекислого газа и солнечного света. В результате образуется глюкоза и выделяется кислород.",
+    "results": {
+      "v1_minimal": {
+        "main_topic": "Photosynthesis",
+        "description": "Процесс, при котором растения преобразуют энергию света в химическую энергию.",
+        "subject": "Plants (photosynthetic organisms)",
+        "location": "Chloroplasts",
+        "required_inputs": [
+          "Water (H2O)",
+          "Carbon dioxide (CO2)",
+          "Sunlight (light energy)"
+        ],
+        "products": [
+          "Glucose (C6H12O6)",
+          "Oxygen (O2)"
+        ],
+        "process_type": "Biochemical reaction",
+        "key_terms": [
+          "photosynthesis",
+          "chloroplasts",
+          "glucose",
+          "oxygen",
+          "light energy",
+          "water",
+          "carbon dioxide"
+        ],
+        "semantic_tags": [
+          "biological_process",
+          "energy_conversion",
+          "plant_biology",
+          "ecology"
+        ],
+        "analysis": {
+          "purpose": "Выработка химической энергии (глюкозы) для питания растений и выделение кислорода в качестве побочного продукта.",
+          "ecological_impact": "Обеспечивает основу продовольственной цепочки и поддерживает уровень кислорода в атмосфере.",
+          "relationship_between_inputs_and_outputs": "Световая энергия и реагенты (вода и CO2) преобразуются в органический материал (глюкозу) и газ (кислород).",
+          "granularity": "Текст представляет собой краткое фактическое описание, которое является точным в биологическом отношении."
+        }
+      },
+      "v2_strict": {
+        "summary": "Photosynthesis converts light energy into chemical energy in plants, producing glucose while releasing oxygen as a byproduct.",
+        "key_points": [
+          "Process occurs in chloroplasts using water, carbon dioxide, and sunlight.",
+          "Generates glucose as stored chemical energy for the plant.",
+          "Releases oxygen into the atmosphere as a waste product."
+        ],
+        "response": "To boost plant growth, ensure your plants receive sufficient light, water, and carbon dioxide for efficient photosynthesis. Consider adjusting the position of indoor plants to maximize light exposure. You can also experiment with supplemental lighting to study or enhance photosynthetic rates."
+      },
+      "v3_few_shot": {
+        "summary": "Photosynthesis converts light energy into chemical energy in plants, generating glucose and releasing oxygen.",
+        "key_points": [
+          "Takes place in chloroplasts using water, carbon dioxide, and sunlight.",
+          "Produces glucose as a chemical energy source for the plant.",
+          "Releases oxygen into the atmosphere as a byproduct."
+        ],
+        "response": "Knowing these inputs and outputs aids in creating optimal growing environments for plants."
+      }
+    }
+  },
+  {
+    "input_text": "Я планирую переезд в другой город ради новой работы, но не уверен, стоит ли снимать квартиру сразу на длительный срок или сначала пожить в краткосрочной аренде, чтобы освоиться. Какой вариант лучше?",
+    "results": {
+      "v1_minimal": {
+        "analysis": {
+          "user_scenario": "Пользователь планирует переезд в другой город ради новой работы и решает, стоит ли сразу заключить долгосрочный договор аренды или сначала пожить в краткосрочной аренде, чтобы освоиться.",
+          "key_factors": [
+            "Стабильность работы: если должность обещает долгосрочную карьеру, долгосрочная аренда обеспечивает ценовую стабильность и избавляет от необходимости поиска жилья неоднократно.",
+            "Финансовые соображения: долгосрочные договоры часто предполагают более низкую ежемесячную плату и гарантию депозита, в то время как краткосрочная аренда может быть дороже из-за более высокой стоимости за ночь или месяца и требований к более высокому гарантийному депозиту.",
+            "Необходимость в гибкости: если пользователь не уверен в предпочтительном районе, комфорте или общей удовлетворенности новым городом, краткосрочная аренда позволяет легко менять жилье без обязательств.",
+            "Стоимость переезда и обустройства: краткосрочная аренда может снизить первоначальные расходы (меньше гарантийного депозита, отсутствие необходимости покупать мебель), в то время как долгосрочная аренда может позволить жителям обставить жилье более основательно, что потенциально снижает общую стоимость проживания.",
+            "Социальные и семейные факторы: необходимость быть рядом с определенными услугами, друзьями или семьей может повлиять на решение о длительности аренды."
+          ],
+          "considerations": {
+            "Преимущества краткосрочной аренды": [
+              "Более высокая гибкость для изменения планов.",
+              "Более низкий финансовый риск, если переезд окажется временным или нежелательным.",
+              "Возможность проживания в разных районах, чтобы определить предпочтения перед заключением долгосрочного договора."
+            ],
+            "Преимущества долгосрочной аренды": [
+              "Более низкая ежемесячная плата и ценовая стабильность.",
+              "Возможность обставить жилье и адаптировать его к своим потребностям.",
+              "Снижение стресса, связанного с неоднократным поиском жилья."
+            ]
+          }
+        },
+        "recommendation": "Если новая работа обещает стабильную, долгосрочную занятость (например, более 12–18 месяцев) и пользователь готов полюбить новый город, лучше заключить долгосрочный договор аренды, чтобы сэкономить деньги и создать дом. Однако, если есть неопределенность в отношении продолжительности работы, желания или финансовых ресурсов для покрытия более высоких расходов на краткосрочную аренду, начните с краткосрочной аренды, чтобы исследовать город и подтвердить свои планы. Многие арендодатели также предлагают option to renew; поэтому можно заключить краткосрочный договор на 3–6 месяцев с возможностью продления, если решение будет положительным."
+      },
+      "v2_strict": {
+        "summary": "When relocating for a new job, weigh job stability against flexibility to decide between a long‑term lease and temporary housing.",
+        "key_points": [
+          "Assess the length and security of your employment contract.",
+          "Compare total costs of short‑term vs. long‑term rentals, including utilities and move‑out fees.",
+          "Use a short‑term stay to explore the city and confirm the neighborhood fits your lifestyle before committing."
+        ],
+        "response": "If your job has a fixed end date or you need time to acclimate, start with a short‑term lease to evaluate the location and living expenses. Once you're satisfied and the role looks stable, sign a longer‑term agreement to lock in better rates. This approach balances flexibility with cost savings."
+      },
+      "v3_few_shot": {
+        "summary": "Пользователь сомневается, снимать ли квартиру на длительный срок или сначала выбрать краткосрочную аренду при переезде в новый город ради работы.",
+        "key_points": [
+          "Краткосрочная аренда предоставляет гибкость для ознакомления с городом и работы до окончательного решения.",
+          "Долгосрочная аренда может предложить лучшую цену и стабильность, но ограничивает возможность быстрого отъезда, если новый город не подходит.",
+          "Учитывайте финансовые сбережения, время поиска жилья и личные предпочтения в изменении обстоятельств."
+        ],
+        "response": "Начните с краткосрочной аренды на 3–6 месяцев, чтобы изучить город, найти работу и оценить жизненные условия. Если вы довольны районом и условиями, переходите на долгосрочный договор аренды, чтобы избежать двойных расходов. Это балансирует гибкость с потенциальной экономией от долгосрочного проживания."
+      }
+    }
+  }
+]
