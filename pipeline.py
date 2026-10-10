@@ -42,7 +42,8 @@ def _call_step(step_name, user_prompt, system_prompt, schema_cls, client):
     """
     Обёртка для одного шага с retry и fallback (Day 6):
     - при empty_response - просто повторяем попытку
-    - при невалидном JSON - повторяем, добавив явное напоминание
+    - при невалидном JSON или JSON не того типа ([], "text", 42) -
+      повторяем, добавив явное напоминание
     - при ошибке валидации схемы - повторяем, ВКЛЮЧАЯ текст ошибки
       от Pydantic прямо в промпт, чтобы модель поняла, что исправить
     """
@@ -62,18 +63,28 @@ def _call_step(step_name, user_prompt, system_prompt, schema_cls, client):
 
         try:
             raw_dict = parse_model_json(raw_response)
-        except json.JSONDecodeError:
-            logger.warning("  [шаг: %s] невалидный JSON, повторяем с напоминанием...", step_name)
+        except ValueError as e:
+            # ValueError покрывает и json.JSONDecodeError (текст не JSON),
+            # и случай, когда JSON валидный, но корень не объект ([], "text", 42).
+            if isinstance(e, json.JSONDecodeError):
+                logger.warning("  [шаг: %s] невалидный JSON, повторяем с напоминанием...", step_name)
+                hint = "предыдущий ответ не был валидным JSON."
+            else:
+                logger.warning("  [шаг: %s] JSON не является объектом (%s), повторяем...", step_name, e)
+                hint = f"предыдущий ответ был JSON неверного типа ({e})."
             current_prompt = (
                 user_prompt
-                + "\n\nВАЖНО: предыдущий ответ не был валидным JSON. "
-                "Верни ТОЛЬКО валидный JSON, без какого-либо текста вокруг."
+                + f"\n\nВАЖНО: {hint} "
+                "Верни ТОЛЬКО валидный JSON-объект в фигурных скобках {...}, "
+                "без какого-либо текста вокруг."
             )
             time.sleep(RETRY_DELAY_SECONDS)
             continue
 
         try:
-            validated = schema_cls(**raw_dict)
+            # model_validate вместо schema_cls(**raw_dict): при неподходящих данных
+            # всегда ValidationError, а не TypeError
+            validated = schema_cls.model_validate(raw_dict)
         except ValidationError as e:
             logger.warning("  [шаг: %s] ошибка валидации, повторяем с деталями ошибки...", step_name)
             current_prompt = (
